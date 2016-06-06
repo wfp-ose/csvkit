@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import argparse
-import bz2
 import codecs
 import gzip
 import itertools
@@ -193,11 +192,6 @@ class CSVKitUtility(object):
 
             if extension == u'.gz':
                 f = LazyFile(gzip.open, path, mode, **kwargs)
-            elif extension == '.bz2':
-                if six.PY2:
-                    f = LazyFile(bz2.BZ2File, path, mode, **kwargs)
-                else:
-                    f = LazyFile(bz2.open, path, mode, **kwargs)
             else:
                 f = LazyFile(open, path, mode, **kwargs)
 
